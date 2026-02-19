@@ -12,6 +12,7 @@ const vector<BuildData> BUILDS = {
         1ULL << 3,     // 2^3  = 8 custo inicial mínimo
         1ULL << 0      // 2^0  = 1 produção base
     ),
+
     BuildData(
         1,
         "Byte organizado",
@@ -19,6 +20,7 @@ const vector<BuildData> BUILDS = {
         1ULL << 6,     // 2^6  = 64
         1ULL << 1      // 2^1  = 2
     ),
+
     BuildData(
         2,
         "Registrador primitivo",
@@ -26,6 +28,7 @@ const vector<BuildData> BUILDS = {
         1ULL << 9,     // 2^9  = 512
         1ULL << 2      // 2^2  = 4
     ),
+
     BuildData(
         3,
         "ALU discreta",
@@ -33,6 +36,7 @@ const vector<BuildData> BUILDS = {
         1ULL << 12,    // 2^12 = 4.096
         1ULL << 3      // 2^3  = 8
     ),
+
     BuildData(
         4,
         "Microprocessador",
@@ -40,6 +44,7 @@ const vector<BuildData> BUILDS = {
         1ULL << 15,    // 2^15 = 32.768
         1ULL << 4      // 2^4  = 16
     ),
+
     BuildData(
         5,
         "Computador pessoal",
@@ -47,6 +52,7 @@ const vector<BuildData> BUILDS = {
         1ULL << 18,    // 2^18 = 262.144
         1ULL << 6      // 2^6  = 64
     ),
+
     BuildData(
         6,
         "Servidor dedicado",
@@ -54,6 +60,7 @@ const vector<BuildData> BUILDS = {
         1ULL << 21,    // 2^21 = 2.097.152
         1ULL << 8      // 2^8  = 256
     ),
+
     BuildData(
         7,
         "Data center modular",
@@ -61,6 +68,7 @@ const vector<BuildData> BUILDS = {
         1ULL << 24,    // 2^24 = 16.777.216
         1ULL << 10     // 2^10 = 1.024
     ),
+
     BuildData(
         8,
         "Cluster distribuído",
@@ -68,6 +76,7 @@ const vector<BuildData> BUILDS = {
         1ULL << 28,    // 2^28 = 268.435.456
         1ULL << 12     // 2^12 = 4.096
     ),
+
     BuildData(
         9,
         "Supercomputador",
@@ -75,6 +84,7 @@ const vector<BuildData> BUILDS = {
         1ULL << 32,    // 2^32 aproximadamente 4 bilhões
         1ULL << 16     // 2^16 = 65.536
     ),
+
     BuildData(
         10,
         "Nuvem global",
@@ -82,6 +92,7 @@ const vector<BuildData> BUILDS = {
         1ULL << 36,    // 2^36 aproximadamente 68 bilhões
         1ULL << 20     // 2^20 aproximadamente 1 milhão
     ),
+
     BuildData(
         11,
         "IA autonôma",
@@ -89,6 +100,7 @@ const vector<BuildData> BUILDS = {
         1ULL << 40,    // 2^40 aproximadamente 1 trilhão
         1ULL << 24     // 2^24 aproximadamente 16 milhões
     ),
+
     BuildData(
         12,
         "AGI experimental",
@@ -96,6 +108,7 @@ const vector<BuildData> BUILDS = {
         1ULL << 45,    // 2^45 aproximadamente 35 trilhões
         1ULL << 27     // 2^27 aproximadamente 134 milhões
     ),
+
     BuildData(
         13,
         "Matriz de singularidade",
@@ -103,6 +116,7 @@ const vector<BuildData> BUILDS = {
         1ULL << 50,    // 2^50 aproximadamente 1 quadrilhão
         1ULL << 30     // 2^30 aproximadamente 1 bilhão
     ),
+
     BuildData(
         14,
         "Computador quântico estável",
@@ -110,6 +124,7 @@ const vector<BuildData> BUILDS = {
         1ULL << 55,    // 2^55 aproximadamente 36 quadrilhões
         1ULL << 33     // 2^33 aproximadamente 8 bilhões
     ),
+    
     BuildData(
         15,
         "Núcleo quântico infinito",
