@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../src/data/effects/effects_data.hpp"
+
 enum class EFFECT_TYPE {
     MULTIPLIER,
 };
@@ -10,9 +12,9 @@ enum class EFFECT_TARGET {
 };
 
 struct Effect {
-    int id, target_id, value, duration;
-    EFFECT_TYPE type;
-    EFFECT_TARGET target;
+    const EffectData* data;
+    int value;
+    int duration;
 
-    Effect(int id, EFFECT_TYPE type, EFFECT_TARGET target, int target_id, int value, int duration) : id(id), type(type), target(target), target_id(target_id), value(value), duration(duration) {}
+    Effect(const EffectData* data, int value, int duration) : data(data), value(value), duration(duration) {}
 };
