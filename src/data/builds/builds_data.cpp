@@ -1,5 +1,3 @@
-#pragma once
-
 #include <builds_data.hpp>
 
 using namespace std;
@@ -124,7 +122,7 @@ const vector<BuildData> BUILDS = {
         1ULL << 55,    // 2^55 aproximadamente 36 quadrilhões
         1ULL << 33     // 2^33 aproximadamente 8 bilhões
     ),
-    
+
     BuildData(
         15,
         "Núcleo quântico infinito",
