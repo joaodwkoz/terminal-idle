@@ -1,6 +1,6 @@
 #pragma once
 
-#include <effect.hpp>
+#include "./effect.hpp"
 
 struct UpgradeTarget {
     EFFECT_TARGET type;

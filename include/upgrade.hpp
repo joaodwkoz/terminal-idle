@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include <effect.hpp>
+#include "./effect.hpp"
 
 struct Upgrade {
     int id;

@@ -2,8 +2,8 @@
 
 #include <map>
 #include <vector>
-#include <upgrade_target.hpp>
-#include <upgrade.hpp>
+#include "./upgrade_target.hpp"
+#include "./upgrade.hpp"
 
 struct Shop {
     std::map<UpgradeTarget, std::vector<Upgrade>> available_upgrades;
