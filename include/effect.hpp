@@ -2,12 +2,12 @@
 
 #include "../src/data/effects/effects_data.hpp"
 
-enum class EFFECT_TYPE {
+enum class EffectType {
     MULTIPLIER,
 };
 
-enum class EFFECT_TARGET {
-    GLOBAL_PROD,
+enum class EffectTarget {
+    GLOBAL_PRODUCTION,
     BUILD,
 };
 
