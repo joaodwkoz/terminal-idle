@@ -18,5 +18,5 @@ struct Requirement {
 
     Requirement(RequirementType type, int target_id, ull min_value) : type(type), target_id(target_id), min_value(min_value) {}
 
-    bool is_satisfied(const Game& game);
+    bool is_satisfied(const Game& game) const;
 };

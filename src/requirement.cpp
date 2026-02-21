@@ -2,7 +2,7 @@
 
 using namespace std;
 
-bool Requirement::is_satisfied(const Game &game) {
+bool Requirement::is_satisfied(const Game &game) const {
     if (type == RequirementType::TOTAL_BITS) {
         if (game.bits >= min_value) {
             return true;
