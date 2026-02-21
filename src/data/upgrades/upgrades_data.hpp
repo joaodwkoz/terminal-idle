@@ -3,16 +3,24 @@
 #include <string>
 #include <vector>
 #include "../../../include/effect.hpp"
+#include "../../../include/requirement.hpp"
 
 typedef unsigned long long ull;
 
+enum class UpgradeTarget {
+    BUILD,
+    GLOBAL,
+};
+
 struct UpgradeData {
-    int id;
+    int id, target_id;
+    UpgradeTarget target;
     std::string name, desc;
-    std::vector<int> effect_ids;
+    std::vector<int> effects_ids;
+    std::vector<Requirement> requirements;
     ull base_cost;
 
-    UpgradeData(int id, const std::string &name, const std::string &desc, const std::vector<int> &effects_ids, ull base_cost) : id(id), name(name), desc(desc), effect_ids(effect_ids), base_cost(base_cost) {}
+    UpgradeData(int id, UpgradeTarget target, int target_id, const std::string &name, const std::string &desc, const std::vector<Requirement> &requirements, const std::vector<int> &effects_ids, ull base_cost) : id(id), target(target), target_id(target_id), name(name), desc(desc), requirements(requirements), effects_ids(effects_ids), base_cost(base_cost) {}
 };
 
 extern const std::vector<UpgradeData> UPGRADES;
