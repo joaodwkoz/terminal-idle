@@ -48,3 +48,54 @@ void Game::deactivate_effect(const Effect &effect) {
         active_effects.erase(it);
     } 
 }
+
+void Game::update_tick(int delta_time) {
+    int remaining_delta = delta_time;
+
+    ull new_prod = calc_total_production();
+
+    bool last_block_had_changes = false;
+
+    while (remaining_delta > 0 && !active_effects.empty()) {
+        int next_expiry = remaining_delta;
+
+        for (const Effect &effect : active_effects) {
+            if (effect.duration < next_expiry) {
+                next_expiry = effect.duration;
+            }
+        }
+
+        bits += new_prod * next_expiry;
+
+        last_block_had_changes = false;
+
+        for (Effect& effect : active_effects) {
+            effect.duration -= next_expiry;
+
+            if (effect.duration <= 0) {
+                last_block_had_changes = true;
+            }
+        }
+
+        active_effects.erase(
+            remove_if(active_effects.begin(), active_effects.end(), [](const Effect& effect) { 
+                return effect.duration <= 0; 
+            }), 
+            active_effects.end()
+        );
+
+        if (last_block_had_changes) {
+            new_prod = calc_total_production();
+        }
+
+        remaining_delta -= next_expiry;
+    }
+
+    if (remaining_delta > 0) {
+        bits += new_prod * remaining_delta;
+    }
+    
+    curr_production = new_prod;
+    
+    ticks += delta_time;
+}
