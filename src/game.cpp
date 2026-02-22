@@ -1,6 +1,9 @@
 #include <game.hpp>
 #include "./data/builds/builds_data.hpp"
 #include "./data/upgrades/upgrades_data.hpp"
+#include <algorithm>
+
+using namespace std;
 
 typedef unsigned long long ull;
 
@@ -32,4 +35,16 @@ ull Game::calc_total_production() const {
     }
 
     return prod;
+}
+
+void Game::activate_effect(const Effect &effect) {
+    active_effects.push_back(effect);
+}
+
+void Game::deactivate_effect(const Effect &effect) {
+    auto it = find(active_effects.begin(), active_effects.end(), effect);
+    
+    if (it != active_effects.end()) {
+        active_effects.erase(it);
+    } 
 }

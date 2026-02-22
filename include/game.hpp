@@ -20,4 +20,8 @@ struct Game {
     ull calc_build_production(const Build& build) const;
 
     ull calc_total_production() const;
+
+    void activate_effect(const Effect &effect);
+
+    void deactivate_effect(const Effect &effect);
 };
