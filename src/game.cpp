@@ -20,7 +20,8 @@ ull Game::calc_build_production(const Build &build) const {
         const EffectData *data = effect.data;
 
         if (data->target == EffectTarget::GLOBAL_PRODUCTION || (data->target == EffectTarget::BUILD && data->target_id == build_id)) {
-            effect_multipliers *= effect.value;
+            effect_multipliers *= get_effect_stacked_multiplier(effect);
+            effect_multipliers /= 100;
         }
     }
      
@@ -37,8 +38,31 @@ ull Game::calc_total_production() const {
     return prod;
 }
 
+int Game::get_effect_stacked_multiplier(const Effect &effect) const {
+    int effect_multiplier = 100;
+
+    for (int i = 0; i < effect.stacks; i++) {
+        effect_multiplier *= effect.value;
+        effect_multiplier /= 100;
+    }
+
+    return effect_multiplier;
+}
+
 void Game::activate_effect(const Effect &effect) {
-    active_effects.push_back(effect);
+    auto it = find_if(active_effects.begin(), active_effects.end(), [&effect](const Effect &other){
+        return effect.data->id == other.data->id;
+    });
+
+    if (it != active_effects.end()) {
+        if (!it->is_infinity()) {
+            it->duration = effect.duration;
+        } else {
+            it->stacks += 1;
+        }
+    } else {
+        active_effects.push_back(effect);
+    }
 }
 
 void Game::deactivate_effect(const Effect &effect) {
@@ -70,7 +94,9 @@ void Game::update_tick(int delta_time) {
         last_block_had_changes = false;
 
         for (Effect& effect : active_effects) {
-            effect.duration -= next_expiry;
+            if (!effect.is_infinity()) {
+                effect.duration -= next_expiry;
+            }
 
             if (effect.duration <= 0) {
                 last_block_had_changes = true;

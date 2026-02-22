@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../src/data/effects/effects_data.hpp"
+#include <climits>
 
 enum class EffectType {
     MULTIPLIER,
@@ -15,6 +16,9 @@ struct Effect {
     const EffectData* data;
     int value;
     int duration;
+    int stacks;
+
+    Effect(const EffectData* data, int value, int duration, int stacks) : data(data), value(value), duration(duration), stacks(stacks) {}
 
     static const int INFINITY = INT_MAX;
 
