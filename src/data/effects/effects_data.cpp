@@ -13,7 +13,7 @@ const vector<EffectData> EFFECTS = {
         "Dedo de Gatilho Binário",
         "Agora seus bits correm mais que elétrons!",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         1,
@@ -23,7 +23,7 @@ const vector<EffectData> EFFECTS = {
         "Faxina no CamelCase",
         "Mais organizado que seus arquivos na pasta Downloads.",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         2,
@@ -33,7 +33,7 @@ const vector<EffectData> EFFECTS = {
         "Puxadinho de Cache",
         "Memória pequena, mas corre como se fosse grande!",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         3,
@@ -43,7 +43,7 @@ const vector<EffectData> EFFECTS = {
         "Calculadora de Padaria 2.0",
         "Faz contas tão rápido que você nem percebe.",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         4,
@@ -53,7 +53,7 @@ const vector<EffectData> EFFECTS = {
         "Silício com Cafeína",
         "Integra lógica, café e rock'n'roll em um chip.",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         5,
@@ -63,7 +63,7 @@ const vector<EffectData> EFFECTS = {
         "Fim do 'Não Responde'",
         "Finalmente seus programas abrem antes do café esfriar.",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         6,
@@ -73,7 +73,7 @@ const vector<EffectData> EFFECTS = {
         "Uptime de Milênio",
         "Pode rodar várias coisas ao mesmo tempo sem surtar.",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         7,
@@ -83,7 +83,7 @@ const vector<EffectData> EFFECTS = {
         "Lego de Rack",
         "Mais modular que seu armário de cabos.",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         8,
@@ -93,7 +93,7 @@ const vector<EffectData> EFFECTS = {
         "Mente de Enxame Lagada",
         "Muitos computadores unidos, mas continuam fofinhos.",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         9,
@@ -103,7 +103,7 @@ const vector<EffectData> EFFECTS = {
         "Deep Blue Jr.",
         "Calcula mais rápido do que sua mente consegue imaginar.",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         10,
@@ -113,7 +113,7 @@ const vector<EffectData> EFFECTS = {
         "Cumulus de Dados",
         "Todos os dados estão na nuvem, inclusive suas piadas.",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         11,
@@ -123,7 +123,7 @@ const vector<EffectData> EFFECTS = {
         "Skynet Minimalista",
         "Produz bits sozinha, sem café ou procrastinação.",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         12,
@@ -133,7 +133,7 @@ const vector<EffectData> EFFECTS = {
         "Filósofo de Terminal",
         "Quase pensante, mas ainda ama loops infinitos.",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         13,
@@ -143,7 +143,7 @@ const vector<EffectData> EFFECTS = {
         "Event Horizon Digital",
         "Onde os bits entram e a realidade sai confusa.",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         14,
@@ -153,7 +153,7 @@ const vector<EffectData> EFFECTS = {
         "Gato de Schrödinger Vivo",
         "Apenas tente não olhar para ele enquanto calcula.",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         15,
@@ -163,7 +163,7 @@ const vector<EffectData> EFFECTS = {
         "Buffer Infinito",
         "Pode conter todos os bits do universo, inclusive os imaginários.",
         200,
-        0
+        Effect::INFINITY
     ),
 
     // Multiplicadores globais 2x permanente
@@ -175,7 +175,7 @@ const vector<EffectData> EFFECTS = {
         "Cafeína no Mainframe",
         "Todo mundo produz em dobro, ninguém reclama!",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         17,
@@ -185,7 +185,7 @@ const vector<EffectData> EFFECTS = {
         "Internet das Torradeiras",
         "Agora até a torradeira do vizinho entra no loop.",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         18,
@@ -195,7 +195,7 @@ const vector<EffectData> EFFECTS = {
         "Decreto 404: Eficiência",
         "A ONU aprova multiplicadores de bits.",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         19,
@@ -205,7 +205,7 @@ const vector<EffectData> EFFECTS = {
         "Superposição Lucrativa",
         "Todos os bits agora existem em múltiplas realidades.",
         200,
-        0
+        Effect::INFINITY
     ),
     EffectData(
         20,
@@ -215,6 +215,6 @@ const vector<EffectData> EFFECTS = {
         "Ctrl+C Ctrl+V Universal",
         "Produção infinita? Talvez... cuidado com paradoxos!",
         200,
-        0
+        Effect::INFINITY
     )
 };

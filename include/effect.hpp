@@ -16,7 +16,11 @@ struct Effect {
     int value;
     int duration;
 
-    Effect(const EffectData* data, int value, int duration) : data(data), value(value), duration(duration) {}
+    static const int INFINITY = INT_MAX;
 
     bool operator == (const Effect&) const = default;
+
+    bool is_infinity() const {
+        return duration == Effect::INFINITY;
+    }
 };
