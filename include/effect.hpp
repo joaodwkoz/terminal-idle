@@ -17,4 +17,6 @@ struct Effect {
     int duration;
 
     Effect(const EffectData* data, int value, int duration) : data(data), value(value), duration(duration) {}
+
+    bool operator == (const Effect&) const = default;
 };
