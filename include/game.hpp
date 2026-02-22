@@ -9,7 +9,8 @@ typedef unsigned long long ull;
 
 struct Game {
     std::string name;
-    ull bits, curr_production;
+    ull bits;
+    ull curr_production;
     int ticks;
     std::vector<bool> purchased_upgrades;
     std::vector<Effect> active_effects;
