@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../src/data/effects/effects_data.hpp"
+#include "../../src/data/effects/effects_data.hpp"
 #include <climits>
 
 enum class EffectType {

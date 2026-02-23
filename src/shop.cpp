@@ -1,7 +1,7 @@
-#include "../include/upgrade_view.hpp"
-#include "../include/build_view.hpp"
-#include "../include/effect.hpp"
-#include "../include/game.hpp"
+#include "../include/view/upgrade_view.hpp"
+#include "../include/view/build_view.hpp"
+#include "../include/core/effect.hpp"
+#include "../include/core/game.hpp"
 #include <vector>
 #include <algorithm>
 #include <cmath>

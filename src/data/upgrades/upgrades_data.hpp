@@ -2,8 +2,8 @@
 
 #include <string>
 #include <vector>
-#include "../../../include/effect.hpp"
-#include "../../../include/requirement.hpp"
+#include "../../../include/core/effect.hpp"
+#include "../../../include/core/requirement.hpp"
 
 typedef unsigned long long ull;
 

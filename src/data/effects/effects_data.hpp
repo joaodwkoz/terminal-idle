@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../include/effect.hpp"
+#include "../../../include/core/effect.hpp"
 #include <string>
 
 struct EffectData {

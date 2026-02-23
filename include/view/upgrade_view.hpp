@@ -1,6 +1,6 @@
 #pragma once 
 
-#include "../src/data/upgrades/upgrades_data.hpp"
+#include "../../src/data/upgrades/upgrades_data.hpp"
 
 enum class UpgradeState {
     LOCKED,
