@@ -1,5 +1,5 @@
-#include "../include/build.hpp"
-#include "../include/upgrade.hpp"
+#include "../include/upgrade_view.hpp"
+#include "../include/build_view.hpp"
 #include "../include/effect.hpp"
 #include "../include/game.hpp"
 #include <vector>
