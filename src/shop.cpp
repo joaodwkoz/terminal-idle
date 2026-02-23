@@ -1,5 +1,6 @@
 #include "../include/build.hpp"
 #include "../include/upgrade.hpp"
+#include "../include/effect.hpp"
 #include "../include/game.hpp"
 #include <vector>
 #include <algorithm>
@@ -75,4 +76,26 @@ void buy_build(Game &game, int build_id, int quantity) {
             game.curr_production = game.calc_total_production();
         }
     };
+}
+
+void buy_upgrade(Game &game, int upgrade_id) {
+    if (upgrade_id >= 0 && upgrade_id < UPGRADES.size()) {
+        if (!game.purchased_upgrades[upgrade_id]) {
+            const UpgradeData *upgrade = &UPGRADES[upgrade_id];
+        
+            if (game.bits >= upgrade->base_cost) {
+                game.bits -= upgrade->base_cost;
+
+                for (int effect_id : upgrade->effects_ids) {
+                    const EffectData *effect_data = &EFFECTS[effect_id];
+                    Effect effect(effect_data, effect_data->base_value, effect_data->base_duration, 1);
+                    game.activate_effect(effect);
+                }
+
+                game.purchased_upgrades[upgrade_id] = true;
+
+                game.curr_production = game.calc_total_production();
+            }
+        }
+    }
 }
