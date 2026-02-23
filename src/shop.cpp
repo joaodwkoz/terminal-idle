@@ -64,3 +64,15 @@ ull calc_build_series_value(const Game &game, int build_id, int quantity) {
 
     return static_cast<ull>((calc_build_value(build_id, game.builds[build_id].quantity) * ((double) pow(BUILD_GROWTH_MULTIPLIER, quantity) - 1)) / ((double) BUILD_GROWTH_MULTIPLIER - 1));
 }
+
+void buy_build(Game &game, int build_id, int quantity) {
+    if (build_id >= 0 && build_id < BUILDS.size()) {
+        ull build_series_value = calc_build_series_value(game, build_id, quantity);
+
+        if (game.bits >= build_series_value) {
+            game.builds[build_id].quantity += quantity;
+            game.bits -= build_series_value;
+            game.curr_production = game.calc_total_production();
+        }
+    };
+}
