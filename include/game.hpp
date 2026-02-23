@@ -22,8 +22,6 @@ struct Game {
 
     ull calc_total_production() const;
 
-    int get_effect_stacked_multiplier(const Effect &effect) const;
-
     void activate_effect(const Effect &effect);
 
     void deactivate_effect(const Effect &effect);

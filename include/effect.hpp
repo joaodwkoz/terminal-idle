@@ -27,4 +27,6 @@ struct Effect {
     bool is_infinity() const {
         return duration == Effect::INFINITY;
     }
+
+    int get_effect_stacked_multiplier() const;
 };
