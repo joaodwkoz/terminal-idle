@@ -50,6 +50,29 @@ vector<UpgradeView> get_available_upgrades(const Game &game) {
     return available_upgrades;
 }
 
+vector<BuildView> get_available_builds(const Game &game) {
+    vector<BuildView> available_builds;
+
+    for (const BuildData &build : BUILDS) {
+        int build_id = build.id;
+
+        BuildState state;
+        if (game.bits >= calc_build_value(build_id, game.builds[build_id].quantity)) {
+            state = BuildState::PURCHASABLE;
+        } else if (game.builds[build_id].quantity || game.bits >= build.base_val) {
+            state = BuildState::VISIBLE;
+        } else {
+            state = BuildState::LOCKED;
+        }
+
+        const BuildView new_build = BuildView(&build, state);
+
+        available_builds.push_back(new_build);
+    }
+
+    return available_builds;
+}
+
 ull calc_build_value(int build_id, int curr_quantity) {
     if (build_id < 0 || build_id >= BUILDS.size()) {
         return 0ULL;
