@@ -52,6 +52,8 @@ void Game::activate_effect(const Effect &effect) {
     } else {
         active_effects.push_back(effect);
     }
+
+    curr_production = calc_total_production();
 }
 
 void Game::deactivate_effect(const Effect &effect) {
@@ -59,6 +61,7 @@ void Game::deactivate_effect(const Effect &effect) {
     
     if (it != active_effects.end()) {
         active_effects.erase(it);
+        curr_production = calc_total_production();
     } 
 }
 
