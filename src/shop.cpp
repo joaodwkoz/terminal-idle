@@ -3,6 +3,9 @@
 #include "../include/game.hpp"
 #include <vector>
 #include <algorithm>
+#include <cmath>
+
+#define BUILD_GROWTH_MULTIPLIER 1.15
 
 using namespace std;
 
@@ -44,4 +47,20 @@ vector<Upgrade> get_available_upgrades(const Game &game) {
     });
 
     return available_upgrades;
+}
+
+ull calc_build_value(int build_id, int curr_quantity) {
+    if (build_id < 0 || build_id >= BUILDS.size()) {
+        return 0ULL;
+    };
+
+    return static_cast<ull>(BUILDS[build_id].base_val * pow(BUILD_GROWTH_MULTIPLIER, curr_quantity));
+}
+
+ull calc_build_series_value(const Game &game, int build_id, int quantity) {
+    if (build_id < 0 || build_id >= BUILDS.size()) {
+        return 0ULL;
+    };
+
+    return static_cast<ull>((calc_build_value(build_id, game.builds[build_id].quantity) * ((double) pow(BUILD_GROWTH_MULTIPLIER, quantity) - 1)) / ((double) BUILD_GROWTH_MULTIPLIER - 1));
 }
