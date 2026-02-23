@@ -10,8 +10,8 @@
 
 using namespace std;
 
-vector<Upgrade> get_available_upgrades(const Game &game) {
-    vector<Upgrade> available_upgrades;
+vector<UpgradeView> get_available_upgrades(const Game &game) {
+    vector<UpgradeView> available_upgrades;
 
     for (const UpgradeData &upgrade : UPGRADES) {
         if (!game.purchased_upgrades[upgrade.id]) {
@@ -37,13 +37,13 @@ vector<Upgrade> get_available_upgrades(const Game &game) {
                 state = UpgradeState::LOCKED;
             }
 
-            const Upgrade new_upgrade = Upgrade(&upgrade, state);
+            const UpgradeView new_upgrade = UpgradeView(&upgrade, state);
 
             available_upgrades.push_back(new_upgrade);
         }
     }
 
-    sort(available_upgrades.begin(), available_upgrades.end(), [](const Upgrade &a, const Upgrade &b) {
+    sort(available_upgrades.begin(), available_upgrades.end(), [](const UpgradeView &a, const UpgradeView &b) {
         return a.data->base_cost < b.data->base_cost;
     });
 
