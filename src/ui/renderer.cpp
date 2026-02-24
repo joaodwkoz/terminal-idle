@@ -2,6 +2,22 @@
 
 using namespace std;
 
+void Renderer::show_cursor() const {
+    cout << "\033[?25h";
+}
+
+void Renderer::hide_cursor() const {
+    cout << "\033[?25l";
+}
+
+void Renderer::reset_cursor() const {
+    cout << "\033[H";
+}
+
+void Renderer::move_cursor(int x, int y) const {
+    cout << "\033[" << (y + 1) << ";" << (x + 1) << "H";
+}
+
 void Renderer::get_terminal_size(int &width, int &height) const {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
@@ -39,4 +55,7 @@ void Renderer::render() {
             }
         }    
     }
+
+    reset_cursor();
+    hide_cursor();
 }

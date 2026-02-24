@@ -16,11 +16,20 @@ class Renderer {
 
             get_terminal_size(width, height);
         
-            back_buffer.assign(height, std::string(width, 0));
-            front_buffer.assign(height, std::string(width, 0));
-
-            std::cout << "\033[?25l";
+            back_buffer.assign(height, std::string(width, ' '));
+            front_buffer.assign(height, std::string(width, ' '));
+            
+            hide_cursor();
+            reset_cursor();
         }
+
+        void show_cursor() const;
+
+        void hide_cursor() const;
+
+        void reset_cursor() const;
+
+        void move_cursor(int x, int y) const;
         
         void clear();
 
