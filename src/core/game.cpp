@@ -81,9 +81,9 @@ void Game::update_tick(int delta_time) {
             }
         }
 
-        bits += new_prod * next_expiry;
-
-        last_block_had_changes = false;
+        ull new_bits = (new_prod * next_expiry + remainder);
+        bits += new_bits / 1000;
+        remainder = new_bits % 1000;
 
         for (Effect& effect : active_effects) {
             if (!effect.is_infinity()) {
@@ -110,7 +110,9 @@ void Game::update_tick(int delta_time) {
     }
 
     if (remaining_delta > 0) {
-        bits += new_prod * remaining_delta;
+        ull new_bits = (new_prod * remaining_delta + remainder);
+        bits += new_bits / 1000;
+        remainder = new_bits % 1000;
     }
     
     curr_production = new_prod;
