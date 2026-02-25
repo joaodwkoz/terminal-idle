@@ -1,6 +1,4 @@
-#include <game.hpp>
-#include "./data/builds/builds_data.hpp"
-#include "./data/upgrades/upgrades_data.hpp"
+#include "core/game.hpp"
 #include <algorithm>
 
 using namespace std;

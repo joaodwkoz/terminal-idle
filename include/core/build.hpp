@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../src/data/builds/builds_data.hpp"
+#include "data/builds_data.hpp"
 
 struct Build {
     const BuildData *data;

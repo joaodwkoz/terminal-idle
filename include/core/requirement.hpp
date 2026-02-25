@@ -1,6 +1,6 @@
 #pragma once 
 
-#include <./game.hpp>
+#include "core/game.hpp"
 
 typedef unsigned long long ull;
 

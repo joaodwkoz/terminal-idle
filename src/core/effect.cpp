@@ -1,4 +1,4 @@
-#include "../../include/effect.hpp"
+#include "core/effect.hpp"
 
 using namespace std;
 
