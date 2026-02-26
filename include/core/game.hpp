@@ -2,30 +2,22 @@
 
 #include <string>
 #include <vector>
-#include "./effect.hpp"
-#include "./build.hpp"
+#include "systems/effect_system.hpp"
+#include "systems/economy_system.hpp"
+#include "systems/inventory_system.hpp"
 
 typedef unsigned long long ull;
 
 struct Game {
     std::string name;
-    ull bits;
+    EffectSystem effects;
+    EconomySystem economy;
+    InventorySystem inventory;
     ull curr_production;
-    ull remainder;
+    bool dirty_production;
     int ticks;
-    std::vector<bool> purchased_upgrades;
-    std::vector<Effect> active_effects;
-    std::vector<Build> builds;
 
-    Game(const std::string &name, ull bits, ull curr_production, ull remainder, int ticks, const std::vector<bool> &purchased_upgrades, const std::vector<Effect> &active_effects, const std::vector<Build> &builds) : name(name), bits(bits), curr_production(curr_production), remainder(remainder), ticks(ticks), purchased_upgrades(purchased_upgrades), active_effects(active_effects), builds(builds) {}
-
-    ull calc_build_production(const Build &build) const;
-
-    ull calc_total_production() const;
-
-    void activate_effect(const Effect &effect);
-
-    void deactivate_effect(const Effect &effect);
+    Game(const std::string &name, const EffectSystem &effects, const EconomySystem &economy, const InventorySystem &inventory, ull curr_production, bool dirty_production, int ticks) : name(name), effects(effects), economy(economy), inventory(inventory), curr_production(curr_production), dirty_production(dirty_production), ticks(ticks) {}
 
     void update_tick(int delta_time);
 };

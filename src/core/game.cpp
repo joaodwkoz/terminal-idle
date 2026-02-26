@@ -1,4 +1,6 @@
 #include "core/game.hpp"
+#include "data/builds_data.hpp"
+#include "data/upgrades_data.hpp"
 #include <algorithm>
 
 using namespace std;
@@ -65,6 +67,10 @@ void Game::deactivate_effect(const Effect &effect) {
 
 void Game::update_tick(int delta_time) {
     int remaining_delta = delta_time;
+    bool has_effects = !effects.active_effects.empty();
+
+    while (remaining_delta > 0 && has_effects) {
+        if (dirty_production) {
 
     ull new_prod = calc_total_production();
 
@@ -77,43 +83,32 @@ void Game::update_tick(int delta_time) {
             if (effect.duration < next_expiry) {
                 next_expiry = effect.duration;
             }
-        }
 
-        ull new_bits = (new_prod * next_expiry + remainder);
-        bits += new_bits / 1000;
-        remainder = new_bits % 1000;
+        int next_expiry = min(remaining_delta, effects.get_min_duration());
 
-        for (Effect& effect : active_effects) {
-            if (!effect.is_infinity()) {
-                effect.duration -= next_expiry;
-            }
+        economy.accumulate(curr_production, next_expiry);
 
-            if (effect.duration <= 0) {
-                last_block_had_changes = true;
-            }
-        }
+        effects.process_time(next_expiry);
 
-        active_effects.erase(
-            remove_if(active_effects.begin(), active_effects.end(), [](const Effect& effect) { 
-                return effect.duration <= 0; 
-            }), 
-            active_effects.end()
-        );
-
-        if (last_block_had_changes) {
-            new_prod = calc_total_production();
+        if (effects.has_changed) {
+            dirty_production = true;
+            has_effects = !effects.active_effects.empty();
+            effects.reset_has_changed();
         }
 
         remaining_delta -= next_expiry;
     }
 
+
     if (remaining_delta > 0) {
+        if (dirty_production) {
         ull new_bits = (new_prod * remaining_delta + remainder);
         bits += new_bits / 1000;
         remainder = new_bits % 1000;
     }
     
-    curr_production = new_prod;
+        economy.accumulate(curr_production, remaining_delta);
+    }
     
     ticks += delta_time;
 }
