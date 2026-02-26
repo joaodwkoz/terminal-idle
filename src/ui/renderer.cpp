@@ -1,4 +1,4 @@
-#include "../../include/ui/renderer.hpp"
+#include "ui/renderer.hpp"
 
 using namespace std;
 
