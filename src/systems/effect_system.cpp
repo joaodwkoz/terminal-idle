@@ -37,7 +37,7 @@ void EffectSystem::process_time(int delta_time) {
     }
 
     auto it = remove_if(active_effects.begin(), active_effects.end(), [](const Effect& effect) { 
-        return effect.duration <= 0; 
+        return effect.is_finished(); 
     });
 
     if (it != active_effects.end()) {

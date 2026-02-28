@@ -24,9 +24,9 @@ struct Effect {
 
     bool operator == (const Effect&) const = default;
 
-    bool is_infinity() const {
-        return duration == Effect::INFINITY;
-    }
+    bool is_finished() const;
+
+    bool is_infinity() const;
 
     int get_effect_stacked_multiplier() const;
 };
