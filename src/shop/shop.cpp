@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <cmath>
 
-#define BUILD_GROWTH_MULTIPLIER 1.15
+constexpr double BUILD_GROWTH_MULTIPLIER = 1.15;
 
 using namespace std;
 
