@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ui/coord.hpp"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -31,13 +32,13 @@ class Renderer {
 
         void reset_cursor() const;
 
-        void move_cursor(int x, int y) const;
+        void move_cursor(const Coord &coord) const;
         
         void clear();
 
-        void draw(int x, int y, char c);
+        void draw(const Coord &coord, char c);
 
-        void draw_string(int x, int y, std::string str);
+        void draw_string(const Coord &coord, std::string str);
 
         void render();
 };
