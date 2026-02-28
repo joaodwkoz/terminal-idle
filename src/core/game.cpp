@@ -8,6 +8,9 @@ using namespace std;
 
 typedef unsigned long long ull;
 
+constexpr int FRAMES = 60;
+constexpr int MS_PER_FRAME = 1000 / FRAMES;
+
 void Game::refresh_production_if_dirty() {
     if (!dirty_production) {
         return;
@@ -51,6 +54,10 @@ void Game::update_tick(int delta_time) {
 
         economy.accumulate(curr_production, remaining_delta);
     }
+
+    ui.accumulator += delta_time;
+    ui.process_particles(ui.accumulator / MS_PER_FRAME);
+    ui.accumulator %= MS_PER_FRAME;
     
     ticks += delta_time;
 }
