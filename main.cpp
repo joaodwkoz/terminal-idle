@@ -4,7 +4,12 @@
 #include <thread>
 #include <map>
 #include <vector>
-#include "./include/game.hpp"
+
+#include "core/game.hpp"
+#include "ui/renderer.hpp"
+
+constexpr int FPS = 60;
+constexpr int TARGET_MS = 1000 / FPS;
 
 using namespace std;
 
@@ -14,20 +19,43 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    /* Teste de loop de execução */
+    Game game = Game::init("Qualquer nome");
+    Renderer renderer = Renderer();
 
-    ull curr_production = 1;
-    ull total_score = 0;
-    
-    int timer = 1;
+    auto last_time = chrono::high_resolution_clock::now();
 
-    while (timer < 10) {
-        total_score += curr_production;
-        timer++;
-        this_thread::sleep_for(chrono::seconds(1));
+    while (true) {
+        auto curr_time = chrono::high_resolution_clock::now();
+        auto diff = chrono::duration_cast<chrono::milliseconds>(curr_time - last_time);
+        last_time = curr_time;
+
+        if (_kbhit()) {
+            char key = _getch();
+
+            if (key == 'l') {
+                game.ui.set_screen(ScreenType::GAME_LOOP);
+            } else if (key == 'm') {
+                game.ui.set_screen(ScreenType::MAIN_MENU);
+            } else if (key == 's') {
+                game.ui.set_screen(ScreenType::SHOP);
+            } else if (key == 'u') {
+                game.ui.set_screen(ScreenType::UPGRADES);
+            } else if (key == 'q') {
+                break;
+            }
+        }
+
+        game.update_tick((int) diff.count());
+
+        renderer.render(game);
+
+        auto processing_time = chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - curr_time);
+        auto wait_time = chrono::milliseconds(TARGET_MS) - processing_time;
+
+        if (wait_time > chrono::milliseconds(0)) {
+            this_thread::sleep_for(wait_time);
+        }
     }
-
-    cout << "Você produziu " << total_score << " bits!" << endl;
 
     return 0;
 }
