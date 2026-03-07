@@ -11,6 +11,19 @@ typedef unsigned long long ull;
 constexpr int FRAMES = 60;
 constexpr int MS_PER_FRAME = 1000 / FRAMES;
 
+Game Game::init(const string &name) {
+    return Game(
+        name,
+        EffectSystem(),
+        EconomySystem(0, 0),
+        InventorySystem(),
+        UISystem(ScreenType::GAME_LOOP, {}, 0),
+        0,
+        false,
+        0
+    );
+}
+
 void Game::refresh_production_if_dirty() {
     if (!dirty_production) {
         return;
