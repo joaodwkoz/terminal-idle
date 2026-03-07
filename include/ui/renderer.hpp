@@ -1,29 +1,32 @@
 #pragma once
 
+#include "core/game.hpp"
 #include "ui/coord.hpp"
+#include "ui/screen_type.hpp"
 #include <iostream>
 #include <vector>
 #include <string>
+#include <map>
 #include <windows.h>
 
 class Renderer {
     private:
         std::vector<std::string> back_buffer;
         std::vector<std::string> front_buffer;
+        std::map<ScreenType, void (Renderer::*)(const Game &game)> screens;
 
         void get_terminal_size(int &width, int &height) const;
+        
+        void draw_menu(const Game &game);
+
+        void draw_game_loop(const Game &game);
+
+        void draw_shop(const Game &game);
+
+        void draw_upgrades(const Game &game);
     public:
         Renderer() {
-            int width;
-            int height;
-
-            get_terminal_size(width, height);
-        
-            back_buffer.assign(height, std::string(width, ' '));
-            front_buffer.assign(height, std::string(width, ' '));
             
-            hide_cursor();
-            reset_cursor();
         }
 
         void show_cursor() const;
@@ -40,5 +43,7 @@ class Renderer {
 
         void draw_string(const Coord &coord, std::string str);
 
-        void render();
+        void draw_screen(const ScreenType &screen, const Game &game);
+
+        void render(const Game &game);
 };
