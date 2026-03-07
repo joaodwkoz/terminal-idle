@@ -1,6 +1,10 @@
 #include "systems/ui_system.hpp"
 #include <algorithm>
 
+void UISystem::set_screen(const ScreenType &type) {
+    current_screen = type;
+}
+
 void UISystem::process_particles(int delta_time) {
     for (Particle &particle : particles) {
         particle.process_time(delta_time);
