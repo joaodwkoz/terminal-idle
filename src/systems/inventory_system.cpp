@@ -1,8 +1,9 @@
 #include "systems/inventory_system.hpp"
+#include "data/data.hpp"
 #include <algorithm>
 
 bool InventorySystem::has_upgrade(int upgrade_id) const {
-    if (upgrade_id < 0 || upgrade_id > purchased_upgrades.size()) {
+    if (!data::is_valid_upgrade_id(upgrade_id)) {
         return false;
     }
 
@@ -10,7 +11,7 @@ bool InventorySystem::has_upgrade(int upgrade_id) const {
 }
 
 void InventorySystem::apply_upgrade(int upgrade_id) {
-    if (upgrade_id < 0 || upgrade_id > purchased_upgrades.size()) {
+    if (!data::is_valid_upgrade_id(upgrade_id)) {
         return;
     }
 
@@ -18,7 +19,7 @@ void InventorySystem::apply_upgrade(int upgrade_id) {
 }
 
 int InventorySystem::get_quantity(int build_id) const {
-    if (build_id < 0 || build_id > builds.size()) {
+    if (!data::is_valid_build_id(build_id)) {
         return 0;
     }
 
@@ -26,7 +27,7 @@ int InventorySystem::get_quantity(int build_id) const {
 }
 
 void InventorySystem::add_quantity(int build_id, int quantity) {
-    if (build_id < 0 || build_id > builds.size() || quantity <= 0) {
+    if (!data::is_valid_build_id(build_id)) {
         return;
     }
 

@@ -1,4 +1,5 @@
 #include "production/production.hpp"
+#include "data/data.hpp"
 
 using namespace std;
 
@@ -6,7 +7,7 @@ typedef unsigned long long ull;
 
 namespace production {
     ull calc_build_production(const InventorySystem &inventory, const EffectSystem &effects, int build_id) {
-        if (build_id < 0 || build_id > data::BUILDS.size()) {
+        if (!data::is_valid_build_id(build_id)) {
             return 0ULL;
         }
 

@@ -1,5 +1,6 @@
 #include "core/game.hpp"
 #include "shop/shop.hpp"
+#include "data/data.hpp"
 #include <vector>
 #include <algorithm>
 #include <cmath>
@@ -73,7 +74,7 @@ namespace shop {
     }
 
     ull calc_build_value(int build_id, int curr_quantity) {
-        if (build_id < 0 || build_id >= data::BUILDS.size()) {
+        if (!data::is_valid_build_id(build_id)) {
             return 0ULL;
         }
 
@@ -81,7 +82,7 @@ namespace shop {
     }
 
     ull calc_build_series_value(const Game &game, int build_id, int quantity) {
-        if (build_id < 0 || build_id >= data::BUILDS.size()) {
+        if (!data::is_valid_build_id(build_id)) {
             return 0ULL;
         }
 
@@ -89,7 +90,7 @@ namespace shop {
     }
 
     void buy_build(Game &game, int build_id, int quantity) {
-        if (build_id < 0 || build_id >= data::BUILDS.size()) {
+        if (!data::is_valid_build_id(build_id)) {
             return;
         }
         
@@ -104,7 +105,7 @@ namespace shop {
     }
 
     void buy_upgrade(Game &game, int upgrade_id) {
-        if (upgrade_id < 0 || upgrade_id >= data::UPGRADES.size()) {
+        if (!data::is_valid_upgrade_id(upgrade_id)) {
             return;
         }
 
