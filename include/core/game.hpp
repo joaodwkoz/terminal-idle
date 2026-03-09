@@ -14,12 +14,13 @@ struct Game {
     EffectSystem effects;
     EconomySystem economy;
     InventorySystem inventory;
+    EffectSystem effects;
     UISystem ui;
     ull curr_production;
     bool dirty_production;
     int ticks;
 
-    Game(const std::string &name, const EffectSystem &effects, const EconomySystem &economy, const InventorySystem &inventory, const UISystem &ui, ull curr_production, bool dirty_production, int ticks) : name(name), effects(effects), economy(economy), inventory(inventory), ui(ui), curr_production(curr_production), dirty_production(dirty_production), ticks(ticks) {}
+    Game(const std::string &name, const EconomySystem &economy, const InventorySystem &inventory,  const EffectSystem &effects, const UISystem &ui, ull curr_production, bool dirty_production, int ticks) : name(name), economy(economy), inventory(inventory), effects(effects), ui(ui), curr_production(curr_production), dirty_production(dirty_production), ticks(ticks) {}
 
     static Game init(const std::string &name);
 

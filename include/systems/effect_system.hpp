@@ -9,6 +9,8 @@ struct EffectSystem {
     std::vector<Effect> active_effects;
     bool has_changed;
 
+    EffectSystem(const std::vector<Effect> &active_effects, bool has_changed) : active_effects(active_effects), has_changed(has_changed) {}
+
     void reset_has_changed();
     
     void activate_effect(const Effect &effect);
