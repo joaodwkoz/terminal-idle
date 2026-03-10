@@ -1,6 +1,7 @@
 #pragma once
 
 #include "data/effects_data.hpp"
+#include "nlohmann/json_fwd.hpp"
 #include <climits>
 
 enum class EffectType {
@@ -19,6 +20,8 @@ struct Effect {
     int stacks;
 
     Effect(const EffectData* data, int value, int duration, int stacks) : data(data), value(value), duration(duration), stacks(stacks) {}
+
+    Effect(const EffectData* data, const nlohmann::json &json_data);
 
     static constexpr int PERMANENT = INT_MAX;
 
