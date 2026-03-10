@@ -11,7 +11,7 @@ void EffectSystem::activate_effect(const Effect &effect) {
     });
 
     if (it != active_effects.end()) {
-        if (!it->is_infinity()) {
+        if (!it->is_permanent()) {
             it->duration = effect.duration;
         } else {
             it->stacks += 1;
@@ -31,7 +31,7 @@ void EffectSystem::deactivate_effect(const Effect &effect) {
 
 void EffectSystem::process_time(int delta_time) {
     for (Effect &effect : active_effects) {
-        if (!effect.is_infinity()) {
+        if (!effect.is_permanent()) {
             effect.duration -= delta_time;
         }
     }
@@ -47,7 +47,7 @@ void EffectSystem::process_time(int delta_time) {
 }
 
 int EffectSystem::get_min_duration() {
-    int min_duration = Effect::INFINITY;
+    int min_duration = Effect::PERMANENT;
 
     for (Effect &effect : active_effects) {
         min_duration = std::min(min_duration, effect.duration);

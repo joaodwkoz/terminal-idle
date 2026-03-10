@@ -6,8 +6,8 @@ bool Effect::is_finished() const {
     return duration <= 0;
 }
 
-bool Effect::is_infinity() const {
-    return duration == Effect::INFINITY;
+bool Effect::is_permanent() const {
+    return duration == Effect::PERMANENT;
 }
 
 int Effect::get_effect_stacked_multiplier() const {

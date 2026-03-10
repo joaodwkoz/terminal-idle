@@ -20,13 +20,13 @@ struct Effect {
 
     Effect(const EffectData* data, int value, int duration, int stacks) : data(data), value(value), duration(duration), stacks(stacks) {}
 
-    static const int INFINITY = INT_MAX;
+    static constexpr int PERMANENT = INT_MAX;
 
     bool operator == (const Effect&) const = default;
 
     bool is_finished() const;
 
-    bool is_infinity() const;
+    bool is_permanent() const;
 
     int get_effect_stacked_multiplier() const;
 };
