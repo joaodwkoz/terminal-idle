@@ -1,5 +1,29 @@
 #include "systems/effect_system.hpp"
+#include "data/data.hpp"
+#include "nlohmann/json.hpp"
 #include <algorithm>
+
+using json = nlohmann::json;
+
+EffectSystem::EffectSystem(const json &json_data) {
+    active_effects = {};
+
+    auto active_json_data = json_data.value("active", json::array());
+
+    if (!active_json_data.empty() && !active_json_data.is_discarded()) {
+        for (const auto &json_e : active_json_data) {
+            int json_id = json_e.value("id", 0);
+
+            if (!data::is_valid_effect_id(json_id)) {
+                continue;
+            }
+
+            Effect effect(&data::EFFECTS[json_id], json_e);
+
+            active_effects.push_back(effect);
+        }
+    }
+}
 
 void EffectSystem::reset_has_changed() {
     has_changed = false;

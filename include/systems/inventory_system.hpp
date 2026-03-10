@@ -1,6 +1,7 @@
 #pragma once
 
 #include "core/build.hpp"
+#include "nlohmann/json_fwd.hpp"
 #include <vector>
 
 struct InventorySystem {
@@ -8,6 +9,8 @@ struct InventorySystem {
     std::vector<Build> builds;
 
     InventorySystem(const std::vector<bool> &purchased_upgrades, const std::vector<Build> &builds) : purchased_upgrades(purchased_upgrades), builds(builds) {}
+
+    InventorySystem(const nlohmann::json &json_data);
 
     bool has_upgrade(int upgrade_id) const;
 
