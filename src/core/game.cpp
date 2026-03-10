@@ -2,21 +2,36 @@
 #include "data/builds_data.hpp"
 #include "data/upgrades_data.hpp"
 #include "production/production.hpp"
+#include "nlohmann/json.hpp"
 #include <algorithm>
 
 using namespace std;
+using json = nlohmann::json;
 
 typedef unsigned long long ull;
 
 constexpr int FRAMES = 60;
 constexpr int MS_PER_FRAME = 1000 / FRAMES;
 
+Game::Game(const json &json_data) 
+    :   name(json_data.value("name", "Sem nome")),
+        economy(json_data.value("economy", json::object())),
+        inventory(json_data.value("inventory", json::object())),
+        effects(json_data.value("effects", json::object())),
+        ui(ScreenType::GAME_LOOP, {}, 0),
+        curr_production(json_data.value("current_production", 0ULL)),
+        dirty_production(false),
+        ticks(json_data.value("total_ticks", 0))
+{
+   
+}
+
 Game Game::init(const string &name) {
     return Game(
         name,
-        EffectSystem(),
         EconomySystem(0, 0),
-        InventorySystem(),
+        InventorySystem({}, {}),
+        EffectSystem({}, false),
         UISystem(ScreenType::GAME_LOOP, {}, 0),
         0,
         false,

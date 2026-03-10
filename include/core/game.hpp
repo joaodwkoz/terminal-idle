@@ -6,12 +6,12 @@
 #include "systems/economy_system.hpp"
 #include "systems/inventory_system.hpp"
 #include "systems/ui_system.hpp"
+#include "nlohmann/json_fwd.hpp"
 
 typedef unsigned long long ull;
 
 struct Game {
     std::string name;
-    EffectSystem effects;
     EconomySystem economy;
     InventorySystem inventory;
     EffectSystem effects;
@@ -21,6 +21,8 @@ struct Game {
     int ticks;
 
     Game(const std::string &name, const EconomySystem &economy, const InventorySystem &inventory,  const EffectSystem &effects, const UISystem &ui, ull curr_production, bool dirty_production, int ticks) : name(name), economy(economy), inventory(inventory), effects(effects), ui(ui), curr_production(curr_production), dirty_production(dirty_production), ticks(ticks) {}
+
+    Game(const nlohmann::json &json_data);
 
     static Game init(const std::string &name);
 
