@@ -26,6 +26,8 @@ struct Game {
 
     static Game init(const std::string &name);
 
+    void refresh_production();
+
     void refresh_production_if_dirty();
     
     void update_tick(int delta_time);

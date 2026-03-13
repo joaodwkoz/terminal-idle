@@ -39,6 +39,10 @@ Game Game::init(const string &name) {
     );
 }
 
+void Game::refresh_production() {
+    curr_production = production::calc_total_production(inventory, effects);
+}
+
 void Game::refresh_production_if_dirty() {
     if (!dirty_production) {
         return;
