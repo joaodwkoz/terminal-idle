@@ -32,4 +32,6 @@ struct Effect {
     bool is_permanent() const;
 
     int get_effect_stacked_multiplier() const;
+
+    nlohmann::json to_json() const;
 };

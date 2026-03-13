@@ -31,3 +31,14 @@ int Effect::get_effect_stacked_multiplier() const {
 
     return effect_multiplier;
 }
+
+json Effect::to_json() const {
+    json json_effect;
+
+    json_effect["id"] = data->id;
+    json_effect["value"] = value;
+    json_effect["duration"] = duration;
+    json_effect["stacks"] = stacks;
+
+    return json_effect;
+}
