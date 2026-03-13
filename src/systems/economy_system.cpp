@@ -14,3 +14,12 @@ void EconomySystem::accumulate(ull curr_production, int delta_time) {
     bits += new_bits / 1000;
     remainder = new_bits % 1000;
 }
+
+json EconomySystem::to_json() const {
+    json json_economy;
+
+    json_economy["bits"] = bits;
+    json_economy["remainder"] = remainder;
+
+    return json_economy;
+}

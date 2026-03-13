@@ -60,3 +60,30 @@ void InventorySystem::add_quantity(int build_id, int quantity) {
 
     builds[build_id].quantity += quantity;
 }
+
+json InventorySystem::to_json() const {
+    json json_inventory;
+        
+    json json_purchased_upgrades = json::array();
+    for (int i = 0; i < (int) purchased_upgrades.size(); i++) {
+        if (has_upgrade(i)) {
+            json_purchased_upgrades.push_back(i);
+        }
+    }
+
+    json_inventory["purchased_upgrades"] = json_purchased_upgrades;
+
+    json json_builds = json::array();
+    for (const Build &build : builds) {
+        json json_build;
+
+        json_build["id"] = build.data->id;
+        json_build["quantity"] = build.quantity;
+
+        json_builds.push_back(json_build);
+    }
+
+    json_inventory["builds"] = json_builds;
+
+    return json_inventory;
+}

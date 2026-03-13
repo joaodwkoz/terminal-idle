@@ -13,4 +13,6 @@ struct EconomySystem {
     EconomySystem(const nlohmann::json &json_data);
 
     void accumulate(ull curr_production, int delta_time);
+
+    nlohmann::json to_json() const;
 };

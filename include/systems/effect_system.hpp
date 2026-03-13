@@ -23,4 +23,6 @@ struct EffectSystem {
     void process_time(int delta_time);
 
     int get_min_duration();
+
+    nlohmann::json to_json() const;
 };

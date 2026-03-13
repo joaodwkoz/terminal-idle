@@ -19,4 +19,6 @@ struct InventorySystem {
     int get_quantity(int build_id) const;
 
     void add_quantity(int build_id, int quantity);
+
+    nlohmann::json to_json() const;
 };

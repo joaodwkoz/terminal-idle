@@ -79,3 +79,16 @@ int EffectSystem::get_min_duration() {
 
     return min_duration;
 }
+
+json EffectSystem::to_json() const {
+    json json_effect_system;
+
+    json json_active = json::array();
+    for (const Effect &effect : active_effects) {
+        json_active.push_back(effect.to_json());
+    }
+
+    json_effect_system["active"] = json_active;
+
+    return json_effect_system;
+}
