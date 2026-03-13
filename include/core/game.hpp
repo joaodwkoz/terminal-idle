@@ -9,6 +9,7 @@
 #include "nlohmann/json_fwd.hpp"
 
 typedef unsigned long long ull;
+typedef long long ll;
 
 struct Game {
     std::string name;
@@ -30,5 +31,9 @@ struct Game {
 
     void refresh_production_if_dirty();
     
-    void update_tick(int delta_time);
+    void update_tick(ll delta_time);
+
+    void load_save(const nlohmann::json &json_save);
+
+    nlohmann::json to_json() const;
 };
