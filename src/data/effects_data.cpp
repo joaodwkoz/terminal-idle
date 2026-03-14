@@ -1,9 +1,7 @@
 #include "data/data.hpp"
 
-using namespace std;
-
 namespace data {
-    const vector<EffectData> EFFECTS = {
+    const std::vector<EffectData> EFFECTS = {
         // Multiplicadores por construção (2x permanente)
         EffectData(
             0,
@@ -13,7 +11,7 @@ namespace data {
             "Dedo de Gatilho Binário",
             "Agora seus bits correm mais que elétrons!",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             1,
@@ -23,7 +21,7 @@ namespace data {
             "Faxina no CamelCase",
             "Mais organizado que seus arquivos na pasta Downloads.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             2,
@@ -33,7 +31,7 @@ namespace data {
             "Puxadinho de Cache",
             "Memória pequena, mas corre como se fosse grande!",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             3,
@@ -43,7 +41,7 @@ namespace data {
             "Calculadora de Padaria 2.0",
             "Faz contas tão rápido que você nem percebe.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             4,
@@ -53,7 +51,7 @@ namespace data {
             "Silício com Cafeína",
             "Integra lógica, café e rock'n'roll em um chip.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             5,
@@ -63,7 +61,7 @@ namespace data {
             "Fim do 'Não Responde'",
             "Finalmente seus programas abrem antes do café esfriar.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             6,
@@ -73,7 +71,7 @@ namespace data {
             "Uptime de Milênio",
             "Pode rodar várias coisas ao mesmo tempo sem surtar.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             7,
@@ -83,7 +81,7 @@ namespace data {
             "Lego de Rack",
             "Mais modular que seu armário de cabos.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             8,
@@ -93,7 +91,7 @@ namespace data {
             "Mente de Enxame Lagada",
             "Muitos computadores unidos, mas continuam fofinhos.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             9,
@@ -103,7 +101,7 @@ namespace data {
             "Deep Blue Jr.",
             "Calcula mais rápido do que sua mente consegue imaginar.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             10,
@@ -113,7 +111,7 @@ namespace data {
             "Cumulus de Dados",
             "Todos os dados estão na nuvem, inclusive suas piadas.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             11,
@@ -123,7 +121,7 @@ namespace data {
             "Skynet Minimalista",
             "Produz bits sozinha, sem café ou procrastinação.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             12,
@@ -133,7 +131,7 @@ namespace data {
             "Filósofo de Terminal",
             "Quase pensante, mas ainda ama loops infinitos.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             13,
@@ -143,7 +141,7 @@ namespace data {
             "Event Horizon Digital",
             "Onde os bits entram e a realidade sai confusa.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             14,
@@ -153,7 +151,7 @@ namespace data {
             "Gato de Schrödinger Vivo",
             "Apenas tente não olhar para ele enquanto calcula.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             15,
@@ -163,7 +161,7 @@ namespace data {
             "Buffer Infinito",
             "Pode conter todos os bits do universo, inclusive os imaginários.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
 
         // Multiplicadores globais 2x permanente
@@ -175,7 +173,7 @@ namespace data {
             "Cafeína no Mainframe",
             "Todo mundo produz em dobro, ninguém reclama!",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             17,
@@ -185,7 +183,7 @@ namespace data {
             "Internet das Torradeiras",
             "Agora até a torradeira do vizinho entra no loop.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             18,
@@ -195,7 +193,7 @@ namespace data {
             "Decreto 404: Eficiência",
             "A ONU aprova multiplicadores de bits.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             19,
@@ -205,7 +203,7 @@ namespace data {
             "Superposição Lucrativa",
             "Todos os bits agora existem em múltiplas realidades.",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         ),
         EffectData(
             20,
@@ -215,7 +213,7 @@ namespace data {
             "Ctrl+C Ctrl+V Universal",
             "Produção infinita? Talvez... cuidado com paradoxos!",
             200,
-            Effect::INFINITY
+            Effect::PERMANENT
         )
     };   
 }
