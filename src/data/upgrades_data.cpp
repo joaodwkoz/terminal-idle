@@ -1,9 +1,7 @@
 #include "data/data.hpp"
 
-using namespace std;
-
 namespace data {
-    const vector<UpgradeData> UPGRADES = {
+    const std::vector<UpgradeData> UPGRADES = {
         // Bit manual (Efeito: 0)
         UpgradeData(
             0,

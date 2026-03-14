@@ -1,7 +1,5 @@
 #include "ui/particle.hpp"
 
-using namespace std;
-
 bool Particle::is_finished() const{
     return curr_step + 1 >= (int) steps.size();
 }

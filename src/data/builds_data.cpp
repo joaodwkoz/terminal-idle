@@ -1,9 +1,7 @@
 #include "data/data.hpp"
 
-using namespace std;
-
 namespace data {
-    const vector<BuildData> BUILDS = {
+    const std::vector<BuildData> BUILDS = {
         BuildData(
             0,
             "Bit manual",

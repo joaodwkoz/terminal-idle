@@ -5,7 +5,6 @@
 #include "nlohmann/json.hpp"
 #include <algorithm>
 
-using namespace std;
 using json = nlohmann::json;
 
 typedef unsigned long long ull;
@@ -27,7 +26,7 @@ Game::Game(const json &json_data)
    
 }
 
-Game Game::init(const string &name) {
+Game Game::init(const std::string &name) {
     return Game(
         name,
         EconomySystem(0, 0),
@@ -59,11 +58,9 @@ void Game::update_tick(ll delta_time) {
     bool has_effects = !effects.active_effects.empty();
 
     while (remaining_delta > 0 && has_effects) {
-        if (dirty_production) {
-            refresh_production_if_dirty();
-        }
+        refresh_production_if_dirty();
 
-        int next_expiry = min(remaining_delta, effects.get_min_duration());
+        int next_expiry = std::min(remaining_delta, effects.get_min_duration());
 
         economy.accumulate(curr_production, next_expiry);
 

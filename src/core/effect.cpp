@@ -2,8 +2,6 @@
 #include "data/data.hpp"
 #include <nlohmann/json.hpp>
 
-using namespace std;
-
 using json = nlohmann::json;
 
 Effect::Effect(const EffectData* effect_data, const json &json_data) {

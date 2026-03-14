@@ -1,8 +1,6 @@
 #include "production/production.hpp"
 #include "data/data.hpp"
 
-using namespace std;
-
 typedef unsigned long long ull;
 
 namespace production {

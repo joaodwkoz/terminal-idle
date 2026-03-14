@@ -1,7 +1,5 @@
 #include "ui/renderer.hpp"
 
-using namespace std;
-
 Renderer::Renderer() {
     int width;
     int height;
@@ -23,19 +21,19 @@ Renderer::Renderer() {
 }
 
 void Renderer::show_cursor() const {
-    cout << "\033[?25h";
+    std::cout << "\033[?25h";
 }
 
 void Renderer::hide_cursor() const {
-    cout << "\033[?25l";
+    std::cout << "\033[?25l";
 }
 
 void Renderer::reset_cursor() const {
-    cout << "\033[H";
+    std::cout << "\033[H";
 }
 
 void Renderer::move_cursor(const Coord &coord) const {
-    cout << "\033[" << (coord.y + 1) << ";" << (coord.x + 1) << "H";
+    std::cout << "\033[" << (coord.y + 1) << ";" << (coord.x + 1) << "H";
 }
 
 void Renderer::get_terminal_size(int &width, int &height) const {
@@ -57,7 +55,7 @@ void Renderer::draw(const Coord &coord, char c) {
     }
 }
 
-void Renderer::draw_string(const Coord &coord, string str) {
+void Renderer::draw_string(const Coord &coord, const std::string &str) {
     if (coord.x >= 0 && coord.x + (int) str.size() < (int) back_buffer[0].size() && coord.y >= 0 && coord.y < (int) back_buffer.size()) {
         for (int i = 0; i < (int) str.size(); i++) {
             back_buffer[coord.y][coord.x + i] = str[i];
@@ -96,7 +94,7 @@ void Renderer::render(const Game &game) {
         for (int j = 0; j < (int) back_buffer[0].size(); j++) {
             if (back_buffer[i][j] != front_buffer[i][j]) {
                 move_cursor(Coord(j, i));
-                cout << back_buffer[i][j];
+                std::cout << back_buffer[i][j];
                 front_buffer[i][j] = back_buffer[i][j];
             }
         }    

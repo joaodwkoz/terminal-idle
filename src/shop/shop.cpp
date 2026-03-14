@@ -7,11 +7,9 @@
 
 constexpr double BUILD_GROWTH_MULTIPLIER = 1.15;
 
-using namespace std;
-
 namespace shop {
-    vector<UpgradeEntry> get_available_upgrades(const Game &game) {
-        vector<UpgradeEntry> available_upgrades;
+    std::vector<UpgradeEntry> get_available_upgrades(const Game &game) {
+        std::vector<UpgradeEntry> available_upgrades;
 
         for (const UpgradeData &upgrade : data::UPGRADES) {
             if (!game.inventory.purchased_upgrades[upgrade.id]) {
@@ -50,8 +48,8 @@ namespace shop {
         return available_upgrades;
     }
 
-    vector<BuildEntry> get_available_builds(const Game &game) {
-        vector<BuildEntry> available_builds;
+    std::vector<BuildEntry> get_available_builds(const Game &game) {
+        std::vector<BuildEntry> available_builds;
 
         for (const BuildData &build : data::BUILDS) {
             int build_id = build.id;

@@ -41,7 +41,7 @@ class Renderer {
 
         void draw(const Coord &coord, char c);
 
-        void draw_string(const Coord &coord, std::string str);
+        void draw_string(const Coord &coord, const std::string &str);
 
         void draw_screen(const ScreenType &screen, const Game &game);
 

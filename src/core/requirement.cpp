@@ -1,7 +1,5 @@
 #include "core/requirement.hpp"
 
-using namespace std;
-
 bool Requirement::is_satisfied(const Game &game) const {
     if (type == RequirementType::TOTAL_BITS) {
         if (game.economy.bits >= min_value) {
