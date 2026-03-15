@@ -3,3 +3,6 @@
 
 # Executáveis
 *.exe
+
+# Arquivos XML
+*.xml
