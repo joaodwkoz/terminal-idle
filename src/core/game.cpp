@@ -32,7 +32,7 @@ Game Game::init(const std::string &name) {
         EconomySystem(0, 0),
         InventorySystem({}, {}),
         EffectSystem({}, false),
-        UISystem(ScreenType::GAME_LOOP, {}, 0),
+        UISystem(ScreenType::MAIN_MENU, {}, 0),
         0,
         false,
         0
