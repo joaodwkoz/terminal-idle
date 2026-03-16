@@ -11,16 +11,16 @@ namespace production {
 
         const BuildData *data = &data::BUILDS[build_id];
 
-        int build_id = data->id;
+        int id = data->id;
         ull base_prod = data->base_prod;
-        int quantity = inventory.builds[build_id].quantity;
+        int quantity = inventory.builds[id].quantity;
 
         int effect_multipliers = 100;
 
         for (const Effect &effect : effects.active_effects) {
             const EffectData *data = effect.data;
 
-            if (data->target == EffectTarget::GLOBAL_PRODUCTION || (data->target == EffectTarget::BUILD && data->target_id == build_id)) {
+            if (data->target == EffectTarget::GLOBAL_PRODUCTION || (data->target == EffectTarget::BUILD && data->target_id == id)) {
                 effect_multipliers *= effect.get_effect_stacked_multiplier();
                 effect_multipliers /= 100;
             }
