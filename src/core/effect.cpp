@@ -1,4 +1,5 @@
 #include "core/effect.hpp"
+#include "data/effects_data.hpp"
 #include "data/data.hpp"
 #include <nlohmann/json.hpp>
 

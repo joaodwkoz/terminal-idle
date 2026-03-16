@@ -1,8 +1,9 @@
 #pragma once
 
-#include "data/effects_data.hpp"
 #include "nlohmann/json_fwd.hpp"
 #include <climits>
+
+struct EffectData;
 
 enum class EffectType {
     MULTIPLIER,
