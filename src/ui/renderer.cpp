@@ -1,4 +1,6 @@
 #include "ui/renderer.hpp"
+#include <fstream>
+#include <string>
 
 Renderer::Renderer() {
     int width;
@@ -63,8 +65,21 @@ void Renderer::draw_string(const Coord &coord, const std::string &str) {
     }
 }
 
+void Renderer::draw_layout(const Coord &coord, const std::string &FILE_NAME) {
+    std::ifstream file("layouts/" + FILE_NAME);
+    std::string line;
+    int curr_y = 0;
+
+    if (file.is_open()) {
+        while(std::getline(file, line)) {
+            draw_string({coord.x, coord.y + curr_y}, line);
+            curr_y++;
+        }
+    }
+}
+
 void Renderer::draw_menu(const Game &Game) {
-    /* EM BREVE */
+    draw_layout(Coord(0, 0), "menu");
 }
 
 void Renderer::draw_game_loop(const Game &Game) {
