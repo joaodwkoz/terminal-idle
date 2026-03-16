@@ -25,9 +25,7 @@ class Renderer {
 
         void draw_upgrades(const Game &game);
     public:
-        Renderer() {
-            
-        }
+        Renderer();
 
         void show_cursor() const;
 
@@ -42,6 +40,8 @@ class Renderer {
         void draw(const Coord &coord, char c);
 
         void draw_string(const Coord &coord, const std::string &str);
+
+        void draw_layout(const Coord &coord, const std::string &FILE_NAME);
 
         void draw_screen(const ScreenType &screen, const Game &game);
 
