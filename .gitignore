@@ -1,8 +1,9 @@
 # VSCode
 .vscode/
 
-# Executáveis
+# Arquivos gerados
 *.exe
+*.o
 
 # Arquivos XML
 *.xml
