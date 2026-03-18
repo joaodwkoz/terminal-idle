@@ -79,7 +79,7 @@ void Renderer::draw_layout(const Coord &coord, const std::string &FILE_NAME) {
 }
 
 void Renderer::draw_menu(const Game &Game) {
-    draw_layout(Coord(0, 0), "menu");
+    draw_layout(Coord(0, 0), "menu.txt");
 }
 
 void Renderer::draw_game_loop(const Game &Game) {
