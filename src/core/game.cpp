@@ -21,7 +21,8 @@ Game::Game(const json &json_data)
         ui(ScreenType::GAME_LOOP, {}, 0),
         curr_production(json_data.value("current_production", 0ULL)),
         dirty_production(false),
-        ticks(json_data.value("total_ticks", 0LL))
+        ticks(json_data.value("total_ticks", 0LL)),
+        is_running(true)
 {
    
 }
@@ -35,7 +36,8 @@ Game Game::init(const std::string &name) {
         UISystem(ScreenType::MAIN_MENU, {}, 0),
         0,
         false,
-        0
+        0,
+        true
     );
 }
 
@@ -135,4 +137,8 @@ json Game::to_json() const {
     json_game["last_save"] = time_ms;
 
     return json_game;
+}
+
+void Game::exit() {
+    is_running = false;
 }

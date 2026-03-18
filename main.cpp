@@ -22,7 +22,7 @@ int main() {
 
     auto last_time = std::chrono::high_resolution_clock::now();
 
-    while (true) {
+    while (game.is_running) {
         auto curr_time = std::chrono::high_resolution_clock::now();
         auto diff = std::chrono::duration_cast<std::chrono::milliseconds>(curr_time - last_time);
         last_time = curr_time;
