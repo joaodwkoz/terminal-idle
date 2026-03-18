@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core/effect.hpp"
+#include "types/effects.hpp"
 #include <vector>
 #include <string>
 

@@ -2,15 +2,11 @@
 
 #include "core/effect.hpp"
 #include "core/requirement.hpp"
+#include "types/upgrades.hpp"
 #include <string>
 #include <vector>
 
 typedef unsigned long long ull;
-
-enum class UpgradeTarget {
-    BUILD,
-    GLOBAL,
-};
 
 struct UpgradeData {
     int id;

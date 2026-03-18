@@ -1,18 +1,8 @@
 #pragma once
 
+#include "data/effects_data.hpp"
 #include "nlohmann/json_fwd.hpp"
 #include <climits>
-
-struct EffectData;
-
-enum class EffectType {
-    MULTIPLIER,
-};
-
-enum class EffectTarget {
-    GLOBAL_PRODUCTION,
-    BUILD,
-};
 
 struct Effect {
     const EffectData* data;

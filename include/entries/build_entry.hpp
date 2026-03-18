@@ -1,14 +1,9 @@
 #pragma once 
 
 #include "data/builds_data.hpp"
+#include "types/builds.hpp"
 
 typedef unsigned long long ull;
-
-enum class BuildState {
-    LOCKED,
-    VISIBLE,
-    PURCHASABLE,
-};
 
 struct BuildEntry {
     const BuildData *data;

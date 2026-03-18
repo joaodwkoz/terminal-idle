@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ui/particle.hpp"
-#include "ui/screen_type.hpp"
+#include "types/screens.hpp"
 #include <vector>
 
 struct UISystem {

@@ -1,13 +1,7 @@
 #pragma once 
 
 #include "data/upgrades_data.hpp"
-
-enum class UpgradeState {
-    LOCKED,
-    VISIBLE,
-    AVAILABLE,
-    PURCHASABLE,
-};
+#include "types/upgrades.hpp"
 
 struct UpgradeEntry {
     const UpgradeData *data;

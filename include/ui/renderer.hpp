@@ -2,7 +2,7 @@
 
 #include "core/game.hpp"
 #include "ui/coord.hpp"
-#include "ui/screen_type.hpp"
+#include "types/screens.hpp"
 #include <iostream>
 #include <vector>
 #include <string>

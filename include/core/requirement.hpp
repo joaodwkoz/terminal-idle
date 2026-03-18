@@ -1,15 +1,9 @@
 #pragma once 
 
 #include "core/game.hpp"
+#include "types/requirements.hpp"
 
 typedef unsigned long long ull;
-
-enum class RequirementType {
-    TOTAL_BITS,
-    TOTAL_TICKS,
-    BUILDS_AMOUNT,
-    UPGRADE_PURCHASED,
-};
 
 struct Requirement {
     RequirementType type;
