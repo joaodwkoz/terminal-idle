@@ -8,6 +8,11 @@
 #include "core/game.hpp"
 #include "ui/renderer.hpp"
 
+#include "handlers/input_handler.hpp"
+#include "handlers/menu_handler.hpp"
+
+#include "types/game.hpp"
+
 constexpr int FPS = 60;
 constexpr int TARGET_MS = 1000 / FPS;
 
@@ -18,7 +23,11 @@ int main() {
     std::cin.tie(nullptr);
 
     Game game = Game::init("Qualquer nome");
+
     Renderer renderer = Renderer();
+    InputHandler input;
+    MenuHandler menu;
+
 
     auto last_time = std::chrono::high_resolution_clock::now();
 
@@ -30,16 +39,10 @@ int main() {
         if (_kbhit()) {
             char key = _getch();
 
-            if (key == 'l') {
-                game.ui.set_screen(ScreenType::GAME_LOOP);
-            } else if (key == 'm') {
-                game.ui.set_screen(ScreenType::MAIN_MENU);
-            } else if (key == 's') {
-                game.ui.set_screen(ScreenType::SHOP);
-            } else if (key == 'u') {
-                game.ui.set_screen(ScreenType::UPGRADES);
-            } else if (key == 'q') {
-                break;
+            if (key != 0) {
+                GameCommand cmd = input.handle(key, game.ui.current_screen);
+
+                menu.execute(cmd, game, save);
             }
         }
 
