@@ -14,5 +14,7 @@ struct EconomySystem {
 
     void accumulate(ull curr_production, int delta_time);
 
+    bool withdraw(ull bits_value);
+
     nlohmann::json to_json() const;
 };

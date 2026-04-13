@@ -15,6 +15,15 @@ void EconomySystem::accumulate(ull curr_production, int delta_time) {
     remainder = new_bits % 1000;
 }
 
+bool EconomySystem::withdraw(ull bits_value) {
+    if (bits >= bits_value) {
+        bits -= bits_value;
+        return true;
+    }
+    
+    return false;
+}
+
 json EconomySystem::to_json() const {
     json json_economy;
 
