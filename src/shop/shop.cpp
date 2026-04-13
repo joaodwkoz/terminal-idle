@@ -87,42 +87,40 @@ namespace shop {
         return static_cast<ull>((calc_build_value(build_id, game.inventory.builds[build_id].quantity) * ((double) pow(BUILD_GROWTH_MULTIPLIER, quantity) - 1)) / ((double) BUILD_GROWTH_MULTIPLIER - 1));
     }
 
-    void buy_build(Game &game, int build_id, int quantity) {
+    void buy_build(EconomySystem &economy, InventorySystem &inventory, int build_id, int quantity) {
         if (!data::is_valid_build_id(build_id)) {
             return;
         }
         
         ull build_series_value = calc_build_series_value(game, build_id, quantity);
 
-        if (game.economy.bits >= build_series_value) {
+        if (economy.withdraw(build_series_value)) {
             game.inventory.builds[build_id].quantity += quantity;
-            game.economy.bits -= build_series_value;
             
             game.dirty_production = true;
         } 
     }
 
-    void buy_upgrade(Game &game, int upgrade_id) {
+    void buy_upgrade(EconomySystem &economy, InventorySystem &inventory, int upgrade_id) {
         if (!data::is_valid_upgrade_id(upgrade_id)) {
             return;
         }
 
-        if (game.inventory.purchased_upgrades[upgrade_id]) {
+        if (inventory.has_upgrade(upgrade_id)) {
             return;
         }
 
         const UpgradeData *upgrade = &data::UPGRADES[upgrade_id];
 
-        if (game.economy.bits >= upgrade->base_cost) {
-            game.economy.bits -= upgrade->base_cost;
-
+        if (economy.withdraw(upgrade->base_cost)) {
             for (int effect_id : upgrade->effects_ids) {
                 const EffectData *effect_data = &data::EFFECTS[effect_id];
                 Effect effect(effect_data, effect_data->base_value, effect_data->base_duration, 1);
                 game.effects.activate_effect(effect);
             }
 
-            game.inventory.purchased_upgrades[upgrade_id] = true;
+
+            inventory.
 
             game.dirty_production = true;
         }
